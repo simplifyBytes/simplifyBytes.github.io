@@ -1,5 +1,157 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>simplifyBytes</title><meta http-equiv="refresh" content="0; url=/mergemonsters-site/">
-<style>body{background:#0e0b21;color:#fff;font-family:sans-serif;padding:16px}a{color:#5af0e6}</style></head>
-<body><p>simplifyBytes makes <a href="/mergemonsters-site/">Merge Monsters: Last Stand</a>.</p></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>simplifyBytes · Merge Monsters: Last Stand</title>
+<meta name="description" content="simplifyBytes is an independent game studio. Our game Merge Monsters: Last Stand is a free, offline merge and tower-defense game for Android.">
+<meta property="og:title" content="Merge Monsters: Last Stand by simplifyBytes">
+<meta property="og:description" content="Merge monsters, deploy them, fire the Meteor and hold the crystal. 100 levels, 20 zones, free and offline.">
+<meta property="og:image" content="https://simplifybytes.github.io/assets/og.jpg">
+<meta property="og:url" content="https://simplifybytes.github.io/">
+<meta name="theme-color" content="#0e0b21">
+<link rel="icon" href="assets/favicon.png">
+<style>
+@font-face{font-family:"Lilita One";src:url(assets/LilitaOne-Regular.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Poppins";src:url(assets/Poppins-SemiBold.ttf) format("truetype");font-weight:600;font-display:swap}
+:root{--bg:#0e0b21;--bg2:#17123a;--card:#1f1850;--line:#2f2670;--text:#f4f2ff;--muted:#b7b0e0;--cyan:#5af0e6;--gold:#ffd23a;--green:#2fbf62;--red:#ff5a4a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:600 16px/1.6 Poppins,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent),radial-gradient(1px 1px at 72% 12%,#fff6 50%,transparent),
+ radial-gradient(2px 2px at 40% 60%,#fff5 50%,transparent),radial-gradient(1px 1px at 88% 70%,#fff7 50%,transparent),
+ radial-gradient(1px 1px at 22% 82%,#fff6 50%,transparent),radial-gradient(60% 50% at 80% 0%,#3b2a9a55,transparent),
+ radial-gradient(50% 40% at 0% 100%,#5a1f8a40,transparent)}
+a{color:var(--cyan)}
+h1,h2,h3{font-family:"Lilita One",Poppins,sans-serif;font-weight:400;letter-spacing:.5px;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:5;background:#0e0b21d9;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:"Lilita One";font-size:24px}
+.brand img{width:40px;height:40px}
+.brand b{color:var(--cyan);font-weight:400}
+nav{margin-left:auto;display:flex;gap:18px}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--text)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 40px}
+.kicker{display:inline-block;color:var(--gold);background:#ffd23a1a;border:1px solid #ffd23a55;border-radius:999px;padding:4px 14px;font-size:14px}
+.hero h1{font-size:clamp(44px,7vw,76px);line-height:1;margin:18px 0 8px;color:var(--cyan);text-shadow:0 4px 0 #0008}
+.hero h1 em{display:block;font-style:normal;color:var(--gold);font-size:.78em}
+.hero p.lead{color:var(--muted);font-size:18px;max-width:520px;margin:14px 0 24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.chips li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"Lilita One";font-size:22px;letter-spacing:.5px;border-radius:999px;padding:14px 28px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.play{background:linear-gradient(#45d97b,var(--green));color:#fff;border:3px solid #fff;box-shadow:0 8px 24px #2fbf6255;animation:pulse 2.2s ease-in-out infinite}
+.btn.ghost{color:var(--text);border:2px solid var(--line);background:var(--bg2)}
+.btn svg{width:22px;height:22px}
+@keyframes pulse{50%{transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.btn.play{animation:none}}
+.note{color:var(--muted);font-size:13px;margin-top:10px}
+.phone{justify-self:center;width:min(320px,80vw);aspect-ratio:9/16;border-radius:36px;padding:10px;background:#000;border:2px solid var(--line);box-shadow:0 30px 80px #000a,0 0 0 8px #1f1850}
+.phone video{width:100%;height:100%;object-fit:contain;border-radius:28px;display:block;background:#000}
+section{padding:56px 0}
+section h2{font-size:clamp(32px,5vw,44px);margin-bottom:8px}
+section .sub{color:var(--muted);margin:0 0 28px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.f b{display:block;font-family:"Lilita One";font-weight:400;font-size:24px;margin-bottom:4px}
+.f p{margin:0;color:var(--muted);font-size:15px}
+.f:nth-child(3n+1) b{color:var(--cyan)}.f:nth-child(3n+2) b{color:var(--gold)}.f:nth-child(3n) b{color:#c58cff}
+.shots{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 18px;margin:0 -16px}
+.shots img{width:220px;height:auto;aspect-ratio:480/853;border-radius:18px;border:1px solid var(--line);scroll-snap-align:start;flex:0 0 auto}
+.studio{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:28px}
+.studio img{width:96px;height:96px;border-radius:22px}
+.studio p{margin:6px 0 0;color:var(--muted)}
+.contact{text-align:center}
+.contact a.mail{font-family:"Lilita One";font-size:clamp(20px,4vw,30px);word-break:break-all}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer a{color:var(--muted)}
+@media (max-width:820px){
+ .hero{grid-template-columns:1fr;padding-top:32px;text-align:center}
+ .hero p.lead{margin-left:auto;margin-right:auto}
+ .chips,.cta{justify-content:center}
+ .features{grid-template-columns:1fr}
+ .studio{grid-template-columns:1fr;text-align:center;justify-items:center}
+ nav a.hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="brand" href="#top"><img src="assets/mark.png" alt=""><span>simplify<b>Bytes</b></span></a>
+ <nav><a href="#game">Game</a><a class="hide-sm" href="#screens">Screenshots</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top" class="wrap">
+ <div class="hero" id="game">
+  <div>
+   <span class="kicker">New on Google Play</span>
+   <h1>Merge Monsters<em>Last Stand</em></h1>
+   <p class="lead">Drop monster orbs, merge two of a kind into something stronger, then deploy them to hold the crystal. Charge the Meteor and blast the toughest attackers.</p>
+   <ul class="chips"><li>Free</li><li>Plays offline</li><li>100 levels</li><li>20 zones</li><li>One-finger controls</li></ul>
+   <div class="cta">
+    <a class="btn play" href="https://play.google.com/store/apps/details?id=com.simplifybytes.mergemonsters">
+     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5Z"/></svg>
+     Get it on Google Play</a>
+    <a class="btn ghost" href="#screens">See screenshots</a>
+   </div>
+   <p class="note">Android 7.0 or newer. Contains ads.</p>
+  </div>
+  <div class="phone"><video src="assets/trailer.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Merge Monsters gameplay trailer"></video></div>
+ </div>
+
+ <section>
+  <h2>Why players keep coming back</h2>
+  <p class="sub">A satisfying merge puzzle and an automatic tower defense in one quick round.</p>
+  <div class="features">
+   <div class="f"><b>Merge to evolve</b><p>Two of a kind fuse into the next tier, from tiny sparks up to giant legends.</p></div>
+   <div class="f"><b>Deploy and defend</b><p>Send your merged monsters to the platforms and watch them fight the waves for you.</p></div>
+   <div class="f"><b>Fire the Meteor</b><p>Every merge charges your power. When it is full, tap an enemy and wipe out a crowd.</p></div>
+   <div class="f"><b>20 living zones</b><p>A new world every five levels, with its own weather, outfits and bigger attackers.</p></div>
+   <div class="f"><b>Daily challenge</b><p>A fresh puzzle every day, daily rewards and a streak to protect.</p></div>
+   <div class="f"><b>Climb the leaderboard</b><p>Compare your best scores with players everywhere through Google Play Games.</p></div>
+  </div>
+ </section>
+
+ <section id="screens">
+  <h2>Screenshots</h2>
+  <p class="sub">Swipe to see more.</p>
+  <div class="shots">
+   <img src="assets/01_meteor.webp" alt="Meteor power hitting attackers" loading="lazy">
+   <img src="assets/02_zones.webp" alt="A new zone every five levels" loading="lazy">
+   <img src="assets/03_merge.webp" alt="Merging monsters in the chamber" loading="lazy">
+   <img src="assets/04_deploy.webp" alt="Deploying monsters to defend the crystal" loading="lazy">
+   <img src="assets/05_boss.webp" alt="Boss wave" loading="lazy">
+   <img src="assets/06_rank.webp" alt="Leaderboard rank after a win" loading="lazy">
+   <img src="assets/07_levels.webp" alt="Level select with 100 levels" loading="lazy">
+   <img src="assets/08_tutorial.webp" alt="Guided tutorial" loading="lazy">
+  </div>
+ </section>
+
+ <section>
+  <div class="studio">
+   <img src="assets/icon.png" alt="Merge Monsters app icon">
+   <div>
+    <h2>About simplifyBytes</h2>
+    <p>We are a small independent studio making simple, satisfying games that are easy to pick up and hard to put down. Every sprite and sound in Merge Monsters is made in-house.</p>
+   </div>
+  </div>
+ </section>
+
+ <section id="contact" class="contact">
+  <h2>Say hello</h2>
+  <p class="sub">Feedback, bug reports and ideas are always welcome.</p>
+  <a class="mail" href="mailto:himanshusharma1994@gmail.com">himanshusharma1994@gmail.com</a>
+ </section>
+</main>
+
+<footer><div class="wrap">
+ <span>© 2026 simplifyBytes</span>
+ <span><a href="mergemonsters-site/privacy.html">Privacy policy</a> · <a href="app-ads.txt">app-ads.txt</a></span>
+</div></footer>
+</body>
+</html>
